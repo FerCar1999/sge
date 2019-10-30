@@ -1,0 +1,156 @@
+/*CONTEIDO*/
+.content{
+	width: 78%;
+	margin-left: 22%;
+    margin-top: 60px;
+}
+.content-full{
+    margin-top: 65px;
+}
+/*FIN DE CONTENIDO*/
+
+/*PAGINATION STYLE*/
+.pagination li.active{
+    background: #ff6f00;
+}
+/*FIN DE PAGINATION*/
+
+/*TABS*/
+.tabs .tab a:hover, 
+.tabs .tab a.active{
+    color: #ff8f00;
+}
+.tabs .tab a.active{
+    color: #ff6f00;
+}
+.tabs .tab a{
+    color: #ff8f00;
+}
+.tabs .indicator{
+    background: #ff6f00;
+}
+/*FIN DE TABS*/
+/*BOTONES*/
+#floatMatriculado{
+    bottom: 45px; 
+    right: 24px;
+}
+.add-button{
+    bottom: 45px !important;
+    right: 25px !important;
+}
+#vista, #deleteNotification{
+    cursor: hand;
+}
+/*FIN DE BOTONES*/
+
+/*PAGINADOR*/
+.stats a{
+    color: #656565; 
+}
+/*FIN DE PAGINADOR*/
+
+/*HELPERS*/
+#div-img-personal{
+    position: relative;
+}
+.input-photo{
+    position: absolute;
+    bottom: 2%;
+    left: 60% !important;
+}
+.material-icons.checkNotification{
+    color: #0288d1;
+}
+/*HELPERS*/
+
+/*TEXT*/
+.text-center{
+    text-align: center;
+}
+.titulo-texto{
+    font-size: 20px;
+    font-weight: 300;
+}
+.tituloNotificacion{
+    font-weight: bold;
+    font-size: 1.3em;
+    text-transform: uppercase;
+}
+.textNotificacion{
+    padding-top: 5px;
+    font-style: justify;
+}
+/*FIN DE TEXT*/
+
+/*MENU*/
+.collapsible-body li{
+    display: none;
+}
+
+/*IMAGENES*/
+#img_personal, #img_personal_mod, #img_alumno, #img_alumno_mod, img#fotoExaula, img#foto, img#fotoHistorial, #fotoOb{
+    height: 14em;
+    width: 14em !important;
+    
+}
+
+/*MODAL CODIGOS*/
+div.modal{
+    overflow-x: scroll;
+}
+
+.modal::-webkit-scrollbar{
+    width:8px;
+    background-color:white;
+} 
+.modal::-webkit-scrollbar-thumb{
+    background-color:#ef6c00;
+    border-radius:10px;
+}
+.modal::-webkit-scrollbar-thumb:hover{
+    background-color:#f57c00;
+    border:1px solid #f57c00;
+}
+.modal::-webkit-scrollbar-thumb:active{
+    background-color:#f57c00;
+    border:1px solid #f57c00;
+}
+
+/*REMOVE CODIGO COLOR*/
+.secondary-content{
+    color: #b71c1c !important;
+}
+.td_center {
+    text-align: center;
+    font-size: 18px;
+}
+.th-permiso {
+    background-color:goldenrod;
+}
+/*LISTA CODIGOS EXAULA
+.dropdown-content li>a, .dropdown-content li>span{
+    color: #757575 !important;
+}*/
+
+/*MEDIA QUERY PARA LOS CONTENIDOS DEPENDIENDO DEL DISPOSITIVO*/
+@media screen and (max-width: 992px){
+	.content{
+		width: 100%;
+		margin-left: 0;
+	}
+}
+
+@media screen and (min-width: 1097px) and (max-width: 1200px) { 
+    .content{
+    	width: 73%;
+    	margin-left: 27%;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1097px) { 
+    .content{
+    	width: 70%;
+    	margin-left: 30%;
+    }
+}

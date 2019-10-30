@@ -1,0 +1,104 @@
+#menu{
+	top: 0;
+	height: 60px;
+	margin-left: 22.3%;
+	width: 77.7%;
+	background: white;
+	position: fixed;
+	z-index: 9;
+}
+#menu-full{
+	top: 0;
+	height: 60px;
+	margin-left: 0%;
+	width: 100%;
+	background: white;
+	position: fixed;
+	z-index: 9;
+
+}
+.menu-button{
+	display: none;
+}
+#options{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+div.background{
+	background-color: #ef6c00;
+}
+
+#options > li{
+	float: left;
+}
+#options > li a{
+	display: block;
+	text-align: center;
+	padding: 16px;
+	text-decoration: none;
+	color: black;
+}
+
+.optionsMenu > li.opcion{
+	margin-left: 1em;
+}
+
+.optionsMenu > li.opcion, .cerrarLista{
+	display: none;
+}
+
+ul#navfixed{
+	overflow-x: scroll;
+}
+
+#navfixed::-webkit-scrollbar{
+    width:8px;
+    background-color:white;
+} 
+#navfixed::-webkit-scrollbar-thumb{
+    background-color:#ef6c00;
+    border-radius:10px;
+}
+#navfixed::-webkit-scrollbar-thumb:hover{
+    background-color:#f57c00;
+    border:1px solid #f57c00;
+}
+#navfixed::-webkit-scrollbar-thumb:active{
+    background-color:#f57c00;
+    border:1px solid #f57c00;
+}
+.icon-stat{
+	font-size: 50px;
+} 
+
+/*ICONOS*/
+.side-nav li>a>i, .side-nav li>a>[class^="mdi-"], .side-nav li>a>[class*="mdi-"], .side-nav li>a>i.material-icons{
+	color: black;
+}
+
+.side-nav li>a>i, .side-nav li>a>[class^="mdi-"], .side-nav li>a>[class*="mdi-"], .side-nav li>a>i.material-icons.submenu{
+	color: #757575;
+}
+
+.side-nav a{
+	color: black;
+}
+.side-nav a.submenu-text{
+	color: #424242;
+}
+
+@media screen and (max-width: 992px){
+	#menu{
+		height: 55px;
+		width: 100%;
+		margin-left: 0px;
+	}
+	.menu-button{
+		color: black;
+		font-size: 3em;
+		display: block;
+	}
+}

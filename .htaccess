@@ -1,0 +1,187 @@
+#PARA QUE SIGA LOS ENLACE SIMBOLICOS
+Options +FollowSymLinks
+Options -Indexes
+#PARA QUE REESCRIBA LAS REGLAS
+RewriteEngine on
+
+#ESPECIFICAMOS LA CARPETA
+RewriteBase /
+
+
+##AQUI EMPIEZAA REESCRIBIR EL NAVEGADOR
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+
+
+##PARA EL PUBLICO
+#L = LAST, NC = NO CASE, QSA = DESCARTA EL QUERY Y GENERA UNA URL NUEVA
+RewriteRule ^inicio$ publico/index.php [L,QSA,NC]
+RewriteRule ^estudiante$ publico/views/dashboard.php [L,QSA,NC]
+RewriteRule ^conducta$ publico/php/reportes/conducta.php [L,QSA,NC]
+RewriteRule ^horario-academico$ publico/php/reportes/horarioacademico.php [L,QSA,NC]
+RewriteRule ^horario-tecnico$ publico/php/reportes/horariotecnico.php [L,QSA,NC]
+
+##PARA EL PRIVADO
+RewriteRule ^login$ privado/index.php [L,QSA,NC]
+RewriteRule ^dashboard$ privado/views/dashboard.php [L,QSA,NC]
+RewriteRule ^perfil$ privado/views/perfilpersonal.php [L,QSA,NC]
+RewriteRule ^notificaciones$ privado/views/notificaciones.php [L,QSA,NC]
+RewriteRule ^personal$ privado/views/personal.php [L,QSA,NC]
+RewriteRule ^alumnos$ privado/views/alumnos.php [L,QSA,NC]
+RewriteRule ^tiempos$ privado/views/tiempos.php [L,QSA,NC]
+RewriteRule ^grados$ privado/views/grados.php [L,QSA,NC]
+RewriteRule ^etapas$ privado/views/etapas.php [L,QSA,NC]
+RewriteRule ^cambiarclave$ privado/views/cambiarclave.php [L,QSA,NC]
+RewriteRule ^recuperar-clave$ privado/views/recuperarpass.php [L,QSA,NC]
+RewriteRule ^asignaturas$ privado/views/asignaturas.php [L,QSA,NC]
+RewriteRule ^secciones$ privado/views/secciones.php [L,QSA,NC]
+RewriteRule ^grupos$ privado/views/grupos.php [L,QSA,NC]
+RewriteRule ^especialidades$ privado/views/especialidades.php [L,QSA,NC]
+RewriteRule ^asuetos$ privado/views/asuetos.php [L,QSA,NC]
+RewriteRule ^horarios$ privado/views/horarios.php [L,QSA,NC]
+RewriteRule ^enfermeria$ privado/views/enfermeria.php [L,QSA,NC]
+RewriteRule ^asistencia$ privado/views/asistencia.php [L,QSA,NC]
+RewriteRule ^permisos$ privado/views/permisos.php [L,QSA,NC]
+RewriteRule ^tipos-codigos$ privado/views/tiposcodigos.php [L,QSA,NC]
+RewriteRule ^codigos$ privado/views/codigos.php [L,QSA,NC]
+RewriteRule ^codigos-exaula$ privado/views/codigosexaula.php [L,QSA,NC]
+RewriteRule ^observaciones$ privado/views/observaciones.php [L,QSA,NC]
+RewriteRule ^control-diciplinario$ privado/views/control_diciplinario.php [L,QSA,NC]
+RewriteRule ^ausencias-justificadas$ privado/views/ausencias.php [L,QSA,NC]
+RewriteRule ^suspendidos$ privado/views/suspendidos.php [L,QSA,NC]
+RewriteRule ^llegadas-tarde$ privado/views/llegadastarde.php [L,QSA,NC]
+RewriteRule ^tipos-asignaturas$ privado/views/tiposasignaturas.php [L,QSA,NC]
+RewriteRule ^tipos-locales$ privado/views/tiposlocales.php [L,QSA,NC]
+RewriteRule ^tipos-locales$ privado/views/tiposlocales.php [L,QSA,NC]
+RewriteRule ^locales$ privado/views/locales.php [L,QSA,NC]
+RewriteRule ^control-llegadas-tarde$ privado/views/ControlllegadasTarde.php [L,QSA,NC]
+RewriteRule ^justificar-bloques$ privado/views/justificar_bloques.php [L,QSA,NC]
+RewriteRule ^justificar-grupo$ privado/views/justificar_retiro.php [L,QSA,NC]
+RewriteRule ^reporte-conducta$ privado/php/reportes/conducta/conducta.php [L,QSA,NC]
+RewriteRule ^reiniciar-datos$ privado/views/newYear.php [L,QSA,NC]
+RewriteRule ^bitacora$ privado/views/bitacora.php [L,QSA,NC]
+RewriteRule ^backup_data$ libs/reiniciar_datos.php [L,QSA,NC]
+
+
+RewriteRule ^justificacion-llegadas-tarde$ privado/views/justificaciones.php [L,QSA,NC]
+RewriteRule ^justificar-inasistencias$ privado/views/justificar_inasistencia.php [L,QSA,NC]
+RewriteRule ^asistencia-administrador$ privado/views/asistencia_administrador.php [L,QSA,NC]
+RewriteRule ^ver-asistencias-administrador$ privado/views/ver_asistencias.php [L,QSA,NC]
+RewriteRule ^eliminar-inasistencia-total$ privado/views/inasistencias_totales.php [L,QSA,NC]
+RewriteRule ^historial-estudiante$ privado/views/historico.php [L,QSA,NC]
+RewriteRule ^reportes$ privado/views/reportes.php [L,QSA,NC]
+RewriteRule ^inasistencias_reporte$ privado/php/reportes/conducta/inasistencias.php [L,QSA,NC]
+RewriteRule ^llegadas_tarde_clase_reporte$ privado/php/reportes/conducta/llegadatarde_c.php [L,QSA,NC]
+RewriteRule ^llegadas_tarde_ins_reporte$ privado/php/reportes/conducta/llegadatarde_i.php [L,QSA,NC]
+RewriteRule ^reporte_inasistencias_justificadas$ privado/php/reportes/conducta/controlJustificada.php [L,QSA,NC]
+##RewriteRule ^reporte_inasistencias_injustificadas$ privado/php/reportes/conducta/controlInasistenciaInjustificada.php [L,QSA,NC]
+RewriteRule ^reporte_inasistencias_injustificadas$ privado/php/reportes/conducta/controlInjustificada.php [L,QSA,NC]
+RewriteRule ^reporte_inasistencias_injustificadas_clases$ privado/php/reportes/conducta/controlInasistenciaClaseInjustificada.php [L,QSA,NC]
+RewriteRule ^lista_tecnica$ privado/php/reportes/listas/listaTecnica.php [L,QSA,NC]
+RewriteRule ^lista_academica$ privado/php/reportes/listas/listaAcademica.php [L,QSA,NC]
+RewriteRule ^control_bloques$ privado/php/reportes/conducta/controlBloques.php [L,QSA,NC]
+RewriteRule ^lista_general$ privado/php/reportes/listas/listadoAlumnos.php [L,QSA,NC]
+
+RewriteRule ^permisos-inasistencias$ privado/views/permisos_estudiantes.php [L,QSA,NC]
+RewriteRule ^justificaciones-individual$ privado/views/justificacion_individual.php [L,QSA,NC]
+
+RewriteRule ^asistencia-diferida$ /privado/views/asistencia_diferida.php [L,QSA,NC]
+
+
+RewriteRule ^ingreso-estudiantes$ /privado/views/ingresosEstudiantes.php [L,QSA,NC]
+
+## Web Routes
+RewriteRule ^clases-sin-marcar-asistencia$ privado/views/maestros_inasistencias.php [L,QSA,NC]
+
+## API Routes
+RewriteRule ^api/v1/personal$ /privado/App/Http/PersonalRequestHandler.php [L,QSA,NC]
+RewriteRule ^api/v1/bitacora$ /privado/App/Http/BitacoraRequestHandler.php [L,QSA,NC]
+
+
+##SE EVITA LISTAR LAS CARPETAS
+Options -Indexes
+ErrorDocument 404 /publico/error.php
+ErrorDocument 403 /publico/error.php
+
+#Evita que el sitio sea descargado
+
+RewriteCond %{HTTP_USER_AGENT} ^BlackWidow [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Bot\ mailto:craftbot@yahoo.com [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^ChinaClaw [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Custo [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^DISCo [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Download\ Demon [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^eCatch [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^EirGrabber [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^EmailSiphon [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^EmailWolf [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Express\ WebPictures [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^ExtractorPro [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^EyeNetIE [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^FlashGet [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^GetRight [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^GetWeb! [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^loginGo!Zilla [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Go-Ahead-Got-It [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^GrabNet [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Grafula [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^HMView [OR] 
+RewriteCond %{HTTP_USER_AGENT} HTTrack [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Image\ Stripper [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Image\ Sucker [OR] 
+RewriteCond %{HTTP_USER_AGENT} Indy\ Library [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} ^InterGET [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Internet\ Ninja [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^JetCar [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^JOC\ Web\ Spider [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^larbin [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^LeechFTP [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Mass\ Downloader [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^MIDown\ tool [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Mister\ PiX [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Navroad [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^NearSite [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^NetAnts [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^NetSpider [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Net\ Vampire [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^NetZIP [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Octopus [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Offline\ Explorer [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Offline\ Navigator [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^PageGrabber [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Papa\ Foto [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^pavuk [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^pcBrowser [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^RealDownload [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^ReGet [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^SiteSnagger [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^SmartDownload [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^SuperBot [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^SuperHTTP [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Surfbot [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^tAkeOut [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Teleport\ Pro [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^VoidEYE [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Web\ Image\ Collector [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Web\ Sucker [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebAuto [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebCopier [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebFetch [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebGo\ IS [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebLeacher [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebReaper [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebSauger [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Website\ eXtractor [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Website\ Quester [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebStripper [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebWhacker [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebZIP [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Wget [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Widow [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WWWOFFLE [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Xaldon\ WebSpider [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Zeus 
+RewriteRule ^.* - [F,L]
+

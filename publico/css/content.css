@@ -1,0 +1,49 @@
+.navAlumno p{
+	color: black;
+	margin: 0 auto;
+	left: 47%;
+	-webkit-transform: translateX(-47%);
+	transform: translateX(-47%);
+	font-size: 1.5em;
+	position: absolute;
+}
+a .card{
+	color: black;
+}
+.iconReport{
+	left: 47%;
+	-webkit-transform: translateX(-47%);
+	transform: translateX(-47%);
+	position: relative;
+	font-size: 6em;
+}
+.responsiveAlumno{
+	margin-left: 1em;
+	margin-top: 2em;
+	width: 70%;
+	height: auto;
+}
+.responsiveLogo{
+	width: 3.1em;
+	height: auto;
+	position: absolute;
+	margin-top: 0.5em;
+	margin-left: 1em;
+}
+.card-parent{
+	margin-top: 2em;
+}
+i{
+	color: black;
+}
+/*TEXTO*/
+.nombre{
+	font-size: 1.5em;
+	font-weight: bold;
+}
+.alumnoText{
+	font-size: 1.2em;
+}
+.bold{
+	font-weight: bold;
+}
