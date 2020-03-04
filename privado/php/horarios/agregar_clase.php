@@ -20,6 +20,7 @@ $grupo_tecnico_completo = isset($_POST["grupo_tecnico_completo"]) ? $_POST["grup
 $id_especialidad = ($id_especialidad == 0) ? 11:$id_especialidad;
 
 if($grupo_tecnico_completo==="SI") {
+	$id_seccion=6;
 	$grupo_tecnico_completo = "Grupo";
 }else {
 	$grupo_tecnico_completo = "Seccion";
@@ -104,5 +105,3 @@ function addToBitacora($aditionalDescription){
 		BitacoraLogger::setLogPersonal();    		
 	} catch (Exception $e) {}	
 }
-
-?>

@@ -7,7 +7,7 @@
 
     $codigo = $_POST["codigo"];
     $etapa = $_POST["etapa"];
-    if(isset($_POST["year"])) $year = $_POST["year"];
+    if(isset($_POST["y"])) $year = $_POST["y"];
     
     $dataEtapa = reportesData::GetEtapa($etapa);
     $etapaInicio = $dataEtapa["inicio"];;

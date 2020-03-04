@@ -92,6 +92,9 @@ $('#ver_personal_inactivo').click(function(e){
 });
 
 $(document).ready(function(){
+	$("#academico").hide();
+	$("#tecnico").hide();
+	$("#divSelectGrado").hide();
 	$('.modal').modal();	
 	paginador = $(".pagination");
 	// cantidad de items por pagina
@@ -102,52 +105,20 @@ $(document).ready(function(){
 	set_callback(get_data_callback_personal); 
 	personal_init();
 	$('select').material_select();
-	$("#formPersonal").on("submit", function(e){
+	$("#formPersonal").on("submit", function (e) {
 		e.preventDefault();
-		var formData = new FormData(this);
-		///DATOS PARA GUARDAR EL PERSONAL
-		formData.append('nombre',$("#nombre").val());
-		formData.append('apellido',$("#apellido").val());
-		formData.append('correo',$("#correo").val());
-		formData.append('codigo',$("#codigo").val());
-		formData.append('clave',$("#clave").val());
-		formData.append('claveR',$("#claveR").val());
-		formData.append('permiso',$("#selectPermiso").val());
-		//Función de AJAX para guardar el personal con foto
-		$.ajax({
-			url: url_personal,
-			type: 'POST',
-			data: formData,
-			contentType: false,
-			processData: false,
-			success: function(resp){
-				switch(resp){
-					case 'agregado':
-						swal('Éxito','Personal agregado.','success');
-						personal_init();
-						limpiarCampos();
-						break;
-						case 'camposFalta':
-							swal('Error',resp,'error');
-							break;
-							default:
-							swal('Error',resp,'error');
-						}
-				//alert(resp);
-			}
-		});
 	});
-	$("#formPersonalMod").on("submit",function(e){
+	$("#formPersonalMod").on("submit", function (e) {
 		e.preventDefault();
 		var formData = new FormData(this);
-		
-		formData.append('id',pk_personal);
+
+		formData.append('id', pk_personal);
 		formData.append('nombre', $("#mod_nombre").val());
-		formData.append('apellido',$("#mod_apellido").val());
-		formData.append('codigo',$("#mod_codigo").val());
-		formData.append('correo',$("#mod_correo").val());
+		formData.append('apellido', $("#mod_apellido").val());
+		formData.append('codigo', $("#mod_codigo").val());
+		formData.append('correo', $("#mod_correo").val());
 		formData.append('url_foto', foto_antigua);
-		formData.append('permiso',$("#selectPermisoMod").val());
+		formData.append('permiso', $("#selectPermisoMod").val());
 
 		$.ajax({
 			url: url_personal,
@@ -155,8 +126,8 @@ $(document).ready(function(){
 			data: formData,
 			contentType: false,
 			processData: false,
-			success: function(resp){
-				Materialize.toast(resp, 5000, 'rounded');
+			success: function (resp) {
+				Materialize.toast(resp,5000,'rounded');
 				personal_init();
 				limpiarCampos();
 			}
@@ -164,11 +135,49 @@ $(document).ready(function(){
 
 	});
 });
-
-//ACCIONES DE LOS BOTONES
-$('#agregar_personal').click(function(e){
-	$("#formPersonal").submit();
-});
+function agregarPersonal() {
+	var formData = new FormData($("#formPersonal")[0]);
+	///DATOS PARA GUARDAR EL PERSONAL
+	formData.append('nombre', $("#nombre").val());
+	formData.append('apellido', $("#apellido").val());
+	formData.append('correo', $("#correo").val());
+	formData.append('codigo', $("#codigo").val());
+	formData.append('clave', $("#clave").val());
+	formData.append('claveR', $("#claveR").val());
+	formData.append('permiso', $("#selectPermiso").val());
+	formData.append('grado', $("#selectGrado").val());
+	formData.append('grupoAca', $("#selectGrupoAcademico").val());
+	formData.append('seccion', $("#selectSeccion").val());
+	formData.append('grupoTec', $("#selectGrupoTecnico").val());
+	formData.append('especialidad', $("#selectEspecialidad").val());
+	formData.append("fotoPersonal", $("#fotoPersonal")[0].files[0]);
+	//Función de AJAX para guardar el personal con foto
+	$.ajax({
+		method: "POST",
+		url: url_personal,
+		data: formData,
+		processData: false,
+		contentType: false,
+		success: function (resp) {
+			switch (resp) {
+				case 'agregado':
+					swal('Éxito', 'Personal agregado.', 'success');
+					personal_init();
+					limpiarCampos();
+					break;
+				case 'camposFalta':
+					swal('Error', resp, 'error');
+					break;
+				default:
+					swal('Error', resp, 'error');
+			}
+		},
+		error: function (resp) {
+			console.log(resp)
+			M.toast({ html: 'Error al contactar con el servidor', classes: 'rounded' });
+		}
+	})
+}
 $('#modificar_personal').click(function(e){
 	$("#formPersonalMod").submit();
 });
@@ -453,3 +462,27 @@ function transferAcademicLoad() {
 		});	
 }
 
+function mostrarGuia() {
+	valor = $("#selectPermiso").val();
+	if (valor == 4) {
+		$("#divSelectGrado").show();
+		$("#academico").hide();
+		$("#tecnico").hide();
+	}
+	else {
+		$("#divSelectGrado").hide();
+		$("#academico").hide();
+		$("#tecnico").hide();
+	}
+}
+function mostrarAcaTec() {
+	valorx = $("#selectGrado").val();
+	if (valorx == 1 || valorx == 2 || valorx == 3) {
+		$("#academico").show();
+		$("#tecnico").hide();
+	}
+	else {
+		$("#academico").hide();
+		$("#tecnico").show();
+	}
+}

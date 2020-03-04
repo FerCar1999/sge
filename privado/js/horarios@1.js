@@ -240,41 +240,43 @@ function forever(){
 		tab_dia=dia;
 	}
 	$('#agregar_clase').click(function(e){
+		//Cambios realizados el 14/1/2020
+		//Verificar que la asignatura no este vacia
 		if($("#select_asignaturas").val() != "") {
-			let numero_asignatura= $("#select_asignaturas").val().substring(0,$("#select_asignaturas").val().indexOf(":"));
-		let id_asignatura = asignaturasID[parseInt(numero_asignatura)-1];
-		$.post(
-			url_guardar_clase,
-			{
-				id_local:$("#select_local").val(),
-				id_grupo:$("#select_grupos").val(),
-				tipo:tipo,
-				id_seccion:$("#select_secciones").val(),
-				id_grado:$("#select_grado").val(),
-				id_asignatura:id_asignatura,
-				id_tiempo:$("#select_hora").val(),
-				id_especialidad:$("#select_especialidad").val(),
-				inicio : $("#date_inicio").pickadate("picker").get( 'select', 'yyyy/mm/dd' ),
-				fin : $("#date_fin").pickadate("picker").get( 'select', 'yyyy/mm/dd' ),
-				dia: tab_dia,
-				modulo:modulo,
-				grupo_tecnico_completo:grupo_tecnico_completo,
-
-
-			},function(resp){
-				if(resp !="true"){
-					storageSelectedData();
-
-					Materialize.toast(resp, 5000,'',function(){
-						location.reload();
-					});
-				}else location.reload();		
-
-			});
-		}else {
-			swal("Alerta","Seleciona una Materia","warning");
+			//Obteniendo todos los horarios seleccionados
+		for(i=0; i<$('#select_hora').val().length;i++){
+				let numero_asignatura= $("#select_asignaturas").val().substring(0,$("#select_asignaturas").val().indexOf(":"));
+			let id_asignatura = asignaturasID[parseInt(numero_asignatura)-1];
+			$.post(
+				url_guardar_clase,
+				{
+					id_local:$("#select_local").val(),
+					id_grupo:$("#select_grupos").val(),
+					tipo:tipo,
+					id_seccion:$("#select_secciones").val(),
+					id_grado:$("#select_grado").val(),
+					id_asignatura:id_asignatura,
+					//Agrgegando el horario que va en el for
+					id_tiempo:$("#select_hora").val()[i],
+					id_especialidad:$("#select_especialidad").val(),
+					inicio : $("#date_inicio").pickadate("picker").get( 'select', 'yyyy/mm/dd' ),
+					fin : $("#date_fin").pickadate("picker").get( 'select', 'yyyy/mm/dd' ),
+					dia: tab_dia,
+					modulo:modulo,
+					grupo_tecnico_completo:grupo_tecnico_completo,
+				},function(resp){
+					if(resp =="true"){
+						storageSelectedData();
+						swal("Exito","Horario agregado exitosamente","success");
+					}else {
+						swal("Alerta",resp,"warning");
+					}		
+				});
 		}
-		
+		//location.reload();
+	}else {
+		swal("Alerta","Seleciona una Materia","warning");
+	}
 	});
 
 	function detalles(pk,pk_tiempo,dia,row){

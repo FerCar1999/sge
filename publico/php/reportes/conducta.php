@@ -40,7 +40,7 @@
 
     $html = '<html>
         <head>
-            <title>Instituto Técnico Ricaldone | Reporte de conducta </title>
+            <title>Kinder Pedro Ricaldone | Reporte de conducta </title>
             
             <style>
                 *{
@@ -91,7 +91,7 @@
 
             <div class="content">
 
-                <p style="text-align:center;font-weight:bold;padding-top:20mm;padding-left:10mm;font-size:13pt;">INSTITUTO TÉCNICO RICALDONE</p>
+                <p style="text-align:center;font-weight:bold;padding-top:20mm;padding-left:10mm;font-size:13pt;">KINDER PEDRO RICALDONE</p>
                 <img src="'.$_SERVER['DOCUMENT_ROOT'].'/media/img/logo.png" style="width:23mm;padding-left:10mm;padding-top:5mm;">';
 
 

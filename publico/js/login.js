@@ -1,5 +1,5 @@
 var url = "/publico/php/login.php";
-var intentos=0;
+var intentos = 0;
 
 /*document.addEventListener("keydown", function(event) {
     if(event.keyCode == 13)
@@ -7,21 +7,20 @@ var intentos=0;
 });
 */
 
-$("#btn_login").click(function (e) {
-    // Hashear password
+$("#btn_login").click(function(e) {
+    //Materialize.toast('De momento, el SGE ha quedado deshabilitado', 5000, 'rounded');
+    //Hashear password
     var user = $("input#codigo").val().trim();
-    var pass = $("input#clave").val().trim();    
+    var pass = $("input#clave").val().trim();
     $.post(
-        url,
-        {
-            "user" : user,
-            "pass" : pass
+        url, {
+            "user": user,
+            "pass": pass
         },
         function(data) {
-            if(data == "true"){
+            if (data == "true") {
                 window.location = "/estudiante";
-            }
-            else if (data == "Clave incorrecta."){
+            } else if (data == "Clave incorrecta.") {
 
                 /*intentos++;
                 if(parseInt(intentos)==3){
@@ -31,9 +30,8 @@ $("#btn_login").click(function (e) {
                 }
                 swal(data);*/
                 Materialize.toast(data, 5000, 'rounded');
-            }
-            else if (data == "El usuario no existe."){
+            } else if (data == "El usuario no existe.") {
                 Materialize.toast(data, 5000, 'rounded');
             }
-        });       
+        });
 });

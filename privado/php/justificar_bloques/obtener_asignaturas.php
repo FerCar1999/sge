@@ -85,8 +85,9 @@
 					    AND h.id_grado = ?
 					    AND h.id_especialidad = ?
 					    AND h.dia = ?
+					    AND ? BETWEEN h.inicio AND h.fin 
 					ORDER BY t.hora_inicial
-		",array($alumno['id_grupo_tecnico'],$alumno['id_seccion'],$alumno['id_grado'],$alumno['id_especialidad'],$dia));
+		",array($alumno['id_grupo_tecnico'],$alumno['id_seccion'],$alumno['id_grado'],$alumno['id_especialidad'],$dia, $fecha));
 
 	// materias tecnicas
 	foreach ($materiasTecnicas as $row) {

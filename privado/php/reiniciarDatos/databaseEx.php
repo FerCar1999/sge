@@ -4,7 +4,7 @@ class Database
      /*Atributos de conexion a la base datos*/
      private static $connection;    
      private static $server = 'database';
-     private static $database = 'diario_pedagogico';
+     private static $database = 'sge';
      private static $username = 'root';
      private static $password =  'DPUser@123'; 
 

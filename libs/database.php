@@ -92,6 +92,9 @@ class Database
         // retorna todos los registros
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+    public static function setDatabase($nombre){
+        self::$database = $nombre;
+    }
 
 }
 ?>

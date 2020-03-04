@@ -1,8 +1,9 @@
 <?php 
     
-    if(isset($_POST["year"])){
+    if(isset($_POST["y"])){
         require_once($_SERVER['DOCUMENT_ROOT']."/privado/php/reiniciarDatos/databaseEx.php");
-        Database::setDatabase("diario_pedagogico_" . $_POST["year"]);
+        Database::setDatabase("sge" . $_POST["y"]);
+
     }
     else{
         require_once($_SERVER['DOCUMENT_ROOT']."/libs/database.php");
@@ -514,7 +515,7 @@
             AND ic.id_horario = h.id_horario
             AND ic.id_estudiante = e.id_estudiante
             AND fecha_hora BETWEEN ? AND DATE_ADD(?,INTERVAL 1 DAY)
-            ORDER BY fecha_hora";
+            ORDER BY fecha_hora ";
             $params = array($pk_alumno, $fecha_inicio, $fecha_fin);
             $data = Database::getRows($sql, $params);
             return $data;

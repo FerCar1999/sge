@@ -29,7 +29,7 @@ if(!empty($_POST))
 				foreach ($file as $line) {
 					$data = str_getcsv($line);
 					$sql="INSERT INTO estudiantes(apellidos, nombres, codigo, correo, clave, foto, id_especialidad, id_grado, id_grupo_academico, id_grupo_tecnico, id_seccion, estado, id_personal, procesado, fecha_procesado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-					$params = array(utf8_encode($data[0]), utf8_encode($data[1]), $data[2], $data[3], password_hash($data[4], PASSWORD_DEFAULT), $data[5], $data[6], $data[7], $data[8], $data[9], $data[10], $data[11], $data[12], $data[13], $data[14]);
+					$params = array($data[0], $data[1], $data[2], $data[3], password_hash($data[4], PASSWORD_DEFAULT), $data[5], $data[6], $data[7], $data[8], $data[9], $data[10], $data[11], $data[12], $data[13], '2020-01-24');
 					if (Database::executeRow($sql, $params))
 					{
 						$num++;

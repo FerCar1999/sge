@@ -92,22 +92,10 @@
 			$rutaTemporal = $_FILES['fotoAlumno']['tmp_name'];
 
 			if ($rutaTemporal != "") {
-				if (exif_imagetype($rutaTemporal) == IMAGETYPE_PNG) {
-    				$rutaDestino = "/media/img/alumnos/".uniqid().".png";
-	    		}
-	    		else if(exif_imagetype($rutaTemporal) == IMAGETYPE_JPEG){
 	        		$rutaDestino = "/media/img/alumnos/".uniqid().".jpg";
-	    		}else {
-	    			if($rutaDestino === ""){
-		        		$rutaDestino = "/media/img/alumnos/alumnoDefault.png"; 
-	    			}else{
-	    				echo 'Formato de imagen incorrecto.';
-	            		exit();
-	    			}
-	        	}
 			}else{
 				if($rutaDestino === ""){
-					$rutaDestino = "/media/img/alumnos/alumnoDefault.png";
+					$rutaDestino = "/media/img/alumnos/alumnoDefault.jpg";
     			}
 			}
 		}
@@ -145,16 +133,12 @@
 
 	}
 	else if ($id > 0 && !empty($nombre) && strlen($nombre)>2 && strlen($nombre) < 36){
-
 		if (!is_uploaded_file($_FILES['fotoAlumnoMod']['tmp_name'])) {
-
 			//sql
 			$sql ="UPDATE estudiantes SET nombres=?, apellidos=?, codigo=?, correo=?, id_grado=?,id_especialidad=?,id_seccion=?, id_grupo_academico=?, id_grupo_tecnico=?, id_personal=? WHERE id_estudiante=?";
-
 			$params = array(strip_tags($nombre),strip_tags($apellido),strip_tags($codigo),strip_tags($correo),strip_tags($idGrado), strip_tags($idEspecialidad),strip_tags($idSeccion), strip_tags($idGrupoAcad), strip_tags($idGrupoTec), strip_tags($idPersonal),strip_tags($id));
 			// ejecuta la consulta
 			if(Database::executeRow($sql, $params)){
-				
 				echo 'Estudiante modificado.';
 					// Bitacora
 				try{
@@ -166,42 +150,19 @@
 				echo 'Estudiante existente.';
 			}
 		}else if (isset($_FILES['fotoAlumnoMod'])) {
-
+			echo '4';
 			$rutaTemporal = $_FILES['fotoAlumnoMod']['tmp_name'];
 			$rutaDestino = substr($url_foto, 0, -4);
-
 			if ($url_foto === "/media/img/alumnos/alumnoDefault.png" && $rutaTemporal != "") {
-				if (exif_imagetype($rutaTemporal) == IMAGETYPE_PNG) {
-    				$rutaDestino = "/media/img/alumnos/".uniqid().".png";
-	    		}
-	    		else if(exif_imagetype($rutaTemporal) == IMAGETYPE_JPEG){
-	        		$rutaDestino = "/media/img/alumnos/".uniqid().".jpg";
-	    		}else {
-	    			if($rutaDestino === ""){
-		        		$rutaDestino = "/media/img/alumnos/".uniqid().".png"; 
-	    			}else{
-	    				echo 'Formato de imagen incorrecto.';
-	            		exit();
-	    			}
-	        	}
+					$rutaDestino = "/media/img/alumnos/".uniqid().".png";
 			}else{
-				if (exif_imagetype($rutaTemporal) == IMAGETYPE_PNG) {
-            		$rutaDestino = $rutaDestino.".png";
-	        	}if(exif_imagetype($rutaTemporal) == IMAGETYPE_JPEG){
-	                $rutaDestino = $rutaDestino.".jpg";
-	        	}else {
-	            	echo 'Formato de imagen incorrecto';
-	            	exit();
-	        	}if($rutaDestino === ""){
-	            	echo "Something went wrong.";
-	            	exit();
-	        	}
+					$rutaDestino = $rutaDestino.".jpg";
 			}
 
     		if (!move_uploaded_file($rutaTemporal, $_SERVER['DOCUMENT_ROOT'].$rutaDestino)){
             	//echo "error";
             	exit();
-        	}
+			}
 
         	$sql ="UPDATE estudiantes SET nombres=?, apellidos=?, codigo=?, correo=?, foto=?, id_grado=?, id_especialidad=?, id_personal=? WHERE id_estudiante=?";
 

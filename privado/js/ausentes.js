@@ -50,7 +50,7 @@ $(document).ready(function () {
 		data: autocompleteAlumnos
 		//data: autocompleteAlumnos
 	});
-	//cargar_ausentes();
+	cargar_ausentes();
 });
 function cargar_ausentes(){
 	$.ajax({
@@ -61,7 +61,7 @@ function cargar_ausentes(){
 		
 		// obtiene la clave lista del json data
 		var lista = data.lista;
-		$("#table2").html("")
+		$("#table").html("")
 		
 		// si es necesario actualiza la cantidad de paginas del paginador	
 		// genera el cuerpo de la tabla
@@ -75,7 +75,7 @@ function cargar_ausentes(){
 				'<td>'+elem.fin+'</td>'+ 
 				'<td>'+elem.permiso+'</td>'+ 			
 				'<td>  <a onclick="eliminar('+elem.id+')" class="btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="Remover"><i  class="material-icons">delete</i></a> <a onclick="swal(\''+elem.motivo+'\');" class="btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="Justificar"><i class="material-icons">gavel</i></a></td>'+
-				'</tr>').appendTo($("#table2"));
+				'</tr>').appendTo($("#tablePermi"));
 			$('.tooltipped').tooltip();
 			
 		});     

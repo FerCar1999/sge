@@ -59,24 +59,106 @@ session_start();
 									</div>
 									<div class="input-field col l6 m6 s12" id="divSelect">
 										<i class="material-icons prefix">assignment_id</i>
-										<select name="" id="selectPermiso">
-											<?php 
-											require_once($_SERVER['DOCUMENT_ROOT']."/libs/database.php");
+										<select name="" id="selectPermiso" onchange="mostrarGuia();">
+											<?php
+											require_once($_SERVER['DOCUMENT_ROOT'] . "/libs/database.php");
 											$sql = "select id_permiso,nombre from permisos where estado='Activo'";
 											$params = array("");
 
 											$data = Database::getRows($sql, $params);
-											foreach($data as $row)
-											{																	
-												echo '<option value="'.$row["id_permiso"].'">'.$row["nombre"].'</option>';
+											foreach ($data as $row) {
+												echo '<option value="' . $row["id_permiso"] . '">' . $row["nombre"] . '</option>';
 											}
 											?>
 										</select>
 										<label>Permiso</label>
 									</div>
+									<div class="input-field col l6 m6 s12" id="divSelectGrado">
+										<i class="material-icons prefix">assignment_id</i>
+										<select name="" id="selectGrado" onchange="mostrarAcaTec();">
+											<?php
+											require_once($_SERVER['DOCUMENT_ROOT'] . "/libs/database.php");
+											$sql = "select id_grado,nombre from grados where estado='Activo'";
+											$params = array("");
+											$data = Database::getRows($sql, $params);
+											foreach ($data as $row) {
+												echo '<option value="' . $row["id_grado"] . '">' . $row["nombre"] . '</option>';
+											}
+											?>
+										</select>
+										<label>Grados</label>
+									</div>
+									<div id="academico">
+										<div class="input-field col l6 m6 s12" id="divSelectGrupoAcad">
+											<i class="material-icons prefix">assignment_id</i>
+											<select name="" id="selectGrupoAcademico">
+												<?php
+												require_once($_SERVER['DOCUMENT_ROOT'] . "/libs/database.php");
+												$sql = "select id_grupo_academico,nombre from grupos_academicos where estado='Activo'";
+												$params = array("");
+
+												$data = Database::getRows($sql, $params);
+												foreach ($data as $row) {
+													echo '<option value="' . $row["id_grupo_academico"] . '">' . $row["nombre"] . '</option>';
+												}
+												?>
+											</select>
+											<label>Grupo Academico</label>
+										</div>
+										<div class="input-field col l6 m6 s12" id="divSelectSeccion">
+											<i class="material-icons prefix">assignment_id</i>
+											<select name="" id="selectSeccion">
+												<?php
+												require_once($_SERVER['DOCUMENT_ROOT'] . "/libs/database.php");
+												$sql = "select id_seccion,nombre from secciones where estado='Activo'";
+												$params = array("");
+
+												$data = Database::getRows($sql, $params);
+												foreach ($data as $row) {
+													echo '<option value="' . $row["id_seccion"] . '">' . $row["nombre"] . '</option>';
+												}
+												?>
+											</select>
+											<label>Seccion</label>
+										</div>
+									</div>
+									<div id="tecnico">
+										<div class="input-field col l6 m6 s12" id="divSelectGrupTecnico">
+											<i class="material-icons prefix">assignment_id</i>
+											<select name="" id="selectGrupoTecnico">
+												<?php
+												require_once($_SERVER['DOCUMENT_ROOT'] . "/libs/database.php");
+												$sql = "select id_grupo_tecnico,nombre from grupos_tecnicos where estado='Activo'";
+												$params = array("");
+
+												$data = Database::getRows($sql, $params);
+												foreach ($data as $row) {
+													echo '<option value="' . $row["id_grupo_tecnico"] . '">' . $row["nombre"] . '</option>';
+												}
+												?>
+											</select>
+											<label>Grupo Tecnico</label>
+										</div>
+										<div class="input-field col l6 m6 s12" id="divSelect">
+											<i class="material-icons prefix">assignment_id</i>
+											<select name="" id="selectEspecialidad">
+												<?php
+												require_once($_SERVER['DOCUMENT_ROOT'] . "/libs/database.php");
+												$sql = "select id_especialidad,nombre from especialidades where estado='Activo'";
+												$params = array("");
+
+												$data = Database::getRows($sql, $params);
+												foreach ($data as $row) {
+													echo '<option value="' . $row["id_especialidad"] . '">' . $row["nombre"] . '</option>';
+												}
+												?>
+											</select>
+											<label>Grupo Tecnico</label>
+										</div>
+									</div>
 									<div class="col s12 right-align">
 										<br>
-										<a class="btn-floating btn-large waves-effect waves-light amber darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Agregar" id="agregar_personal">
+										<a class="btn-floating btn-large waves-effect waves-light amber darken-4 tooltipped" data-position="left" data-delay="50" data-tooltip="Agregar" id="agregar_personal" onclick="agregarPersonal();">
 											<i class="material-icons">add</i>
 										</a>
 									</div>

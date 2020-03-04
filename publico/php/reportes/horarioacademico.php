@@ -31,7 +31,7 @@
     $horarioHtml = 
 '<html>
     <head>
-        <title>Instituto Técnico Ricaldone | Horario de clases </title>
+        <title>Kinder Pedro Ricaldone | Horario de clases </title>
         
         <style>
             *{
@@ -80,7 +80,7 @@
         <div class="content">
 
             <img src="'.$_SERVER['DOCUMENT_ROOT'].'/media/img/logo.png" style="width:20mm;padding-left:6mm;padding-top:30mm;">
-            <p style="text-align:center;font-weight:bold;padding-top:-16mm;padding-left:10mm;font-size:13pt;">INSTITUTO TÉCNICO RICALDONE</p>
+            <p style="text-align:center;font-weight:bold;padding-top:-16mm;padding-left:10mm;font-size:13pt;">KINDER PEDRO RICALDONE</p>
             <p style="text-align:center;font-weight:bold;padding-left:10mm;font-size:13pt;">'.$alumno[0][5].'</p>
             <br>
             <table style="width:190mm;margin-left:6mm;border-collapse:collapse;margin-top:10mm;" cellspacing="0" cellpadding="0">
